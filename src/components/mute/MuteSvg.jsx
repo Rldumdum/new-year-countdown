@@ -14,8 +14,8 @@ export default function MuteSvg({ mute, handleToggleMute }) {
   return (
     <div style={{ cursor: "pointer" }} onClick={handleToggleMute}>
       <svg
-        width="78"
-        height="64"
+        width="50"
+        height="50"
         viewBox="0 0 78 64"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

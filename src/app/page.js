@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import MuteSvg from "../components/mute/MuteSvg";
+import Image from "next/image";
 export default function Home() {
   const [countdown, setCountdown] = useState({
     days: 0,
@@ -44,12 +45,54 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col h-screen justify-center items-center ">
-      <nav className="w-full bg-slate-200 h-20 absolute top-0">
-        <div className="absolute top-0 right-5">
-          <MuteSvg mute={mute} handleToggleMute={handleToggleMute} />
+    <main className="flex flex-col h-screen justify-center items-center  m-auto bg-slate-950">
+      <div className="opacity-20">
+        <Image
+          alt="Background"
+          src="/bg.png"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          style={{ pointerEvents: "none" }}
+        />
+      </div>
+      <div className="navbar bg-green-300 top-0 fixed">
+        <div className="flex-1">
+          <a className="btn btn-ghost text-xl">New Year Countdown</a>
         </div>
-      </nav>
+        <div className="flex-none">
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle"
+            >
+              <div className="indicator">
+                <h1>SHOP</h1>
+                <span className="badge badge-sm indicator-item ">8</span>
+              </div>
+            </div>
+            <div
+              tabIndex={0}
+              className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+            >
+              <div className="card-body">
+                <span className="font-bold text-lg">
+                  Treat Yourself With Some Gifts this Coming New Year
+                </span>
+                <div className="card-actions">
+                  <button className="btn btn-primary btn-block">
+                    View Shop
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="px-10">
+            <MuteSvg mute={mute} handleToggleMute={handleToggleMute} />
+          </div>
+        </div>
+      </div>
       <audio
         ref={audioRef}
         muted={mute}
@@ -57,8 +100,11 @@ export default function Home() {
         autoPlay
         loop
       ></audio>
-      <h1 className="text-5xl font-serif pb-6">New Year Countdown</h1>
-      <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+
+      <h1 className="text-5xl font-serif text-white pb-6 relative z-20">
+        New Year Countdown
+      </h1>
+      <div className="grid grid-flow-col gap-5 text-center auto-cols-max relative z-20">
         <div className="flex flex-col bg-slate-200 p-10">
           <span className="countdown font-mono text-7xl">
             <span style={{ "--value": countdown.days }}></span>

@@ -1,17 +1,21 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
+import { Inter } from "next/font/google";
+import "./globals.css";
+import styles from "../styles/Home.module.css";
+import MuteContextProvider from "./store/mute-context";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'New Year Countdown',
-  description: 'New Year Countdown',
-}
+  title: "New Year Countdown",
+  description: "New Year Countdown",
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+    <MuteContextProvider>
+      <html lang="en">
+        <body className={styles.testFont}>{children}</body>
+      </html>
+    </MuteContextProvider>
+  );
 }
